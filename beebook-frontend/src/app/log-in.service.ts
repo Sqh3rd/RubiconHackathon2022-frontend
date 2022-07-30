@@ -17,12 +17,10 @@ export class LogInService {
     this.options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + btoa(email+':'+password),
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE, PUT',
-        'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token, content-type'
+        'Authorization': 'Basic ' + email + ':' + password,
+        'Access-Control-Allow-Origin':'*'
       })
     };
-      return this.httpClient.get('http://localhost:8000/beebook/default/login', this.options).subscribe(data => console.log(data));
+      return this.httpClient.get('http://localhost:8000/beebook/default/login', this.options).subscribe(data => console.log(data), error => console.log(error));
   }
 }
