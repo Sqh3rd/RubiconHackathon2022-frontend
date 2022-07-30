@@ -17,8 +17,12 @@ export class LogInComponent {
 
   login() {
     if (this.email && this.password) {
-      this.authService.login(this.email, this.password)
-          .subscribe(res => console.log(res));
+      if(this.authService.login(this.email, this.password)){
+        console.log("Success");
+      }
+      else {
+        console.log('Failure');
+      }
     }
   }
 }

@@ -9,5 +9,70 @@
 }
 
 h1{
-    color:rgb(209, 209, 24);
+    color:rgb(255, 196, 0);
+    text-align:center;
+}
+.navbar {
+    display: flex;
+    position: fixed;
+    width:100%;
+    top:0;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(255, 196, 0);
+    color: white;
+    z-index:100;
+}
+
+.navbar-links {
+    height: 100%;
+    flex-grow:100;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+    border-right: 1px solid #fff;
+}
+
+.navbar-links li:last-child{
+    border-left: 1px solid #fff;
+}
+
+.navbar-links li:first-child{
+    border-left: 1px solid #fff;
+}
+
+.navbar-links li.right {
+    margin-left: auto;
+}
+
+.navbar-links li > a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    font-size: 1.125rem;
+}
+
+.navbar-links li > a.active {
+    background-color: rgb(255, 166, 0);
+}
+
+.dropdown-content a.active {
+    background-color: lightskyblue !important;
+}
+
+.navbar-links li:hover {
+    background-color: rgb(255, 208, 0);
+    cursor: pointer;
+}
+
+.fill-navbar-height{
+    height:60px;
 }

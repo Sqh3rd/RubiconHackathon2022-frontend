@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +18,11 @@ export class LogInService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(email+':'+password),
-        'Access-Control-Allow-Headers':'*'
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE, PUT',
+        'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token, content-type'
       })
     };
-      return this.httpClient.get('http://192.168.169.112:8000/beebook/default/login', this.options);
+      return this.httpClient.get('http://localhost:8000/beebook/default/login', this.options).subscribe(data => console.log(data));
   }
 }
