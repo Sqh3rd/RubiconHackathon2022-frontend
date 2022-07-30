@@ -1,0 +1,13 @@
+.map-div{
+    display:block;
+    width:100%;
+}
+
+.map-div .map{
+    display:block;
+    width:100%;
+}
+
+h1{
+    color:rgb(209, 209, 24);
+}
