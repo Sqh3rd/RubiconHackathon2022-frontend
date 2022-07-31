@@ -8,7 +8,7 @@
             [center]="center"
             [options]="options">
             <div *ngFor="let hive of selectedHives">
-                <map-circle *ngIf="hive.sickness === ''"
+                <map-circle *ngIf="hive.sickness === '' && hive !== selectedHive"
                     [radius]="5000"
                     [center]="hive.loc"
                     [options]="circleOptions">
@@ -17,6 +17,11 @@
                     [radius]="5000"
                     [center]="hive.loc"
                     [options]="sickCircleOptions">
+                </map-circle>
+                <map-circle *ngIf="hive.sickness === '' && hive === selectedHive"
+                    [radius]="5000"
+                    [center]="hive.loc"
+                    [options]="selectedCircleOptions">
                 </map-circle>
                 <map-marker *ngIf="hive !== selectedHive && !hive.sickness"
                     [position]="hive.loc"

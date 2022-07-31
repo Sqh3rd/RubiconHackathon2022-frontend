@@ -35,6 +35,10 @@ export class MainPageComponent implements OnInit {
     fillColor: "red",
     strokeColor: "red"
   };
+  selectedCircleOptions: google.maps.CircleOptions = {
+    fillColor: "orange",
+    strokeColor: "orange"
+  }
 
   selectedHive: bee_hive;
 
