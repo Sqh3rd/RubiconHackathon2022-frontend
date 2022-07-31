@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
-import { bee_hive } from '../bee_hive';
+import { bee_hive, full_name } from '../bee_hive';
 import { ManageBeehivesService } from '../manage-beehives.service';
 
 @Component({
@@ -16,20 +16,20 @@ export class OtherPageComponent implements OnInit {
 
   @Input() selectedHive: bee_hive;
 
+  @Input() selectedHives: bee_hive[];
+
   constructor(private beeService: ManageBeehivesService) { }
 
   ngOnInit(): void {
-    this.getHives();
   }
 
   ngOnChanges(changes: SimpleChanges): void{
     if ('selectedHive' in changes){
       this.selectedHive = changes['selectedHive'].currentValue;
     }
-  }
-
-  getHives(){
-    this.beeService.fetchOtherHives().subscribe(hives => this.other_bee_hives = hives);
+    if ('selectedHives' in changes){
+      this.selectedHives = changes['selectedHives'].currentValue;
+    }
   }
 
   onSelect(hive:bee_hive){

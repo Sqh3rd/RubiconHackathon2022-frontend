@@ -60,9 +60,9 @@
         </div>
         <div class="menu-content" id="menu-content">
             <div class="menu-list">
-                <app-own-page *ngIf="selected === 0" [selectedHive]="selectedHive" [(selectedHive)]="selectedHive"></app-own-page>
-                <app-other-page *ngIf="selected === 1" [selectedHive]="selectedHive" [(selectedHive)]="selectedHive"></app-other-page>
-                <app-fav-page *ngIf="selected === 2" [selectedHive]="selectedHive" [(selectedHive)]="selectedHive"></app-fav-page>
+                <app-own-page *ngIf="selected === 0" [selectedHive]="selectedHive" [(selectedHive)]="selectedHive" [selectedHives]="selectedHives"></app-own-page>
+                <app-other-page *ngIf="selected === 1" [selectedHive]="selectedHive" [(selectedHive)]="selectedHive" [selectedHives]="selectedHives"></app-other-page>
+                <app-fav-page *ngIf="selected === 2" [selectedHive]="selectedHive" [(selectedHive)]="selectedHive" [selectedHives]="selectedHives"></app-fav-page>
             </div>
             <div class="menu-detail">
                 <app-hive-detail [selectedHive]="selectedHive" [canBeEdited]="canBeEdited" [selectedHives]="selectedHives" [(selectedHives)]="selectedHives"></app-hive-detail>

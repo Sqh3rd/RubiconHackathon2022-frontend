@@ -13,10 +13,7 @@
   <div class="navbar-links">
     <ul>
       <li>
-        <a>Home</a>
-      </li>
-      <li>
-        <a [ngClass]="{active: router.url === '/main'}" (click)="goToMain()">Main</a>
+        <a [ngClass]="{active: router.url.startsWith('/home')}" (click)="goToHome()">Home</a>
       </li>
       <li class="right">
         <a [ngClass]="{active: router.url === '/login'}" (click)="goToLogin()">Login</a>

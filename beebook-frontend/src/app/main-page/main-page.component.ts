@@ -4,8 +4,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { bee_hive } from '../bee_hive';
 import { ManageBeehivesService } from '../manage-beehives.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-
+import { full_name } from '../bee_hive';
 
 @Component({
   selector: 'app-main-page',
@@ -93,9 +92,9 @@ export class MainPageComponent implements OnInit {
       if(draggingMenu){
         draggingMenu = false;
         if(mouseY - e.clientY > 5){
-            document.getElementById("main")?.style.setProperty("--map-height","20%");
+            document.getElementById("main")?.style.setProperty("--map-height","25%");
         }else if (e.clientY - mouseY > 5){
-              document.getElementById("main")?.style.setProperty("--map-height","80%");
+              document.getElementById("main")?.style.setProperty("--map-height","75%");
         }
       }
     });
@@ -105,26 +104,23 @@ export class MainPageComponent implements OnInit {
   onSelect(n:number){
     this.selected = n;
     if (n === 0){
-      this.hiveService.fetchOwnHives().subscribe(hives => this.selectedHives = hives);
       this.router.navigate(['./own-hives'], {relativeTo: this.route});
       this.canBeEdited = true;
     }
     else if (n === 1){
-      this.hiveService.fetchOtherHives().subscribe(hives => this.selectedHives = hives);
       this.router.navigate(['./other-hives'], {relativeTo: this.route});
       this.canBeEdited = false;
     }
     else{
-      this.hiveService.fetchFavHives().subscribe(hives => this.selectedHives = hives);
       this.router.navigate(['./fav-hives'], {relativeTo: this.route});
       this.canBeEdited = false;
     }
+    this.loadHives();
     this.selectedHive = this.selectedHives[0];
   }
 
   onSelectHive(hive:bee_hive){
     this.selectedHive = hive;
-    console.log(this.selectedHive);
   }
 
   selectedHivesEvent(hives:bee_hive[]){
@@ -138,11 +134,25 @@ export class MainPageComponent implements OnInit {
         lng: position.coords.longitude,
       }
     })
-    let hive: bee_hive = {id:14, name:"Neu", user_owner: "Max Mustermann", is_favorite: false, loc: this.location, bee_type: "Honigbiene", sickness: "", small_radius: 5, big_radius: 10}
+    let hive: bee_hive = {id:14, name:"Neu", user_owner: "Max Mustermann", loc: this.location, bee_type: "Honigbiene", sickness: "", small_radius: 5, big_radius: 10}
     this.hiveService.appendOwnHive(hive);
+    this.loadHives();
   }
 
   delete(){
     this.hiveService.deleteOwnHive(this.selectedHive.id);
+    this.loadHives();
+  }
+
+  loadHives(){
+    if (this.selected === 0){
+      this.hiveService.fetchOwnHives(full_name).subscribe(hives => this.selectedHives = hives);
+    }
+    else if (this.selected === 1){
+      this.hiveService.fetchOtherHives(full_name).subscribe(hives => this.selectedHives = hives);
+    }
+    else if (this.selected === 2){
+      this.hiveService.fetchFavHives(full_name).subscribe(hives => this.selectedHives = hives);
+    }
   }
 }

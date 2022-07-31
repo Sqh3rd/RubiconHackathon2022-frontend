@@ -4,10 +4,12 @@ import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   isLogin = false;
 
   roleAs: string;
+
 
   constructor() { }
 

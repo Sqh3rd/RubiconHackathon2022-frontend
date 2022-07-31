@@ -25,7 +25,7 @@ h1{
 }
 
 .brand-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin: .5rem;
     margin-right:1rem;
 }
@@ -63,7 +63,7 @@ h1{
     text-decoration: none;
     color: white;
     padding: 1rem;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
 }
 
 .navbar-links li > a.active {
@@ -174,7 +174,7 @@ h1{
 }
 
 .logo-image img{
-    height:3rem;
+    height:3.4rem;
     aspect-ratio: 1;
 }
 

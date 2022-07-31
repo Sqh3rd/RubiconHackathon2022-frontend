@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { bee_hive, own_bee_hives } from '../bee_hive';
+import { bee_hive } from '../bee_hive';
+import { ManageBeehivesService } from '../manage-beehives.service';
 
 @Component({
   selector: 'app-hive-detail',
@@ -11,7 +12,6 @@ export class HiveDetailComponent implements OnInit {
   @Input() selectedHive: bee_hive;
   @Input() selectedHives: bee_hive[];
   @Output() selectedHivesChange = new EventEmitter<bee_hive[]>();
-  location: google.maps.LatLngLiteral = {lat: 0, lng: 0};
 
   @Input() canBeEdited: boolean;
 

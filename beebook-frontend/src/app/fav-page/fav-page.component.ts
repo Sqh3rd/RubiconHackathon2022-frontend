@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { bee_hive } from '../bee_hive';
 import { ManageBeehivesService } from '../manage-beehives.service';
+import { full_name } from '../bee_hive';
 
 @Component({
   selector: 'app-fav-page',
@@ -9,26 +10,23 @@ import { ManageBeehivesService } from '../manage-beehives.service';
 })
 export class FavPageComponent implements OnInit {
 
-  fav_bee_hives: bee_hive[];
-
   @Output() selectedHiveChange = new EventEmitter<bee_hive>();
 
   @Input() selectedHive: bee_hive;
+  @Input() selectedHives: bee_hive[];
 
   constructor(private beeService: ManageBeehivesService) { }
 
   ngOnInit(): void {
-    this.getHives();
   }
 
   ngOnChanges(changes:SimpleChanges){
     if ('selectedHive' in changes){
       this.selectedHive = changes['selectedHive'].currentValue;
     }
-  }
-  
-  getHives(){
-    this.beeService.fetchFavHives().subscribe(hives => this.fav_bee_hives = hives);
+    if ('selectedHives' in changes){
+      this.selectedHives = changes['selectedHives'].currentValue;
+    }
   }
 
   onSelect(hive:bee_hive){

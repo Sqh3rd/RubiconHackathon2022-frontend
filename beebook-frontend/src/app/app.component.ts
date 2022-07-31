@@ -18,8 +18,8 @@ export class AppComponent{
     });
   }
   title = 'beebook-frontend';
-  goToMain() {
-    this.router.navigate(['/', 'main']);
+  goToHome() {
+    this.router.navigate(['/', 'home']);
   }
   goToLogin() {
     this.router.navigate(['/', 'login']);

@@ -1,4 +1,4 @@
-<div class="hive-details">
+<div class="hive-details" *ngIf="selectedHive">
     <label>Name: </label>
     <input [readonly] = "!canBeEdited" [(ngModel)]="selectedHive.name">
     <label>Besitzer: </label>
