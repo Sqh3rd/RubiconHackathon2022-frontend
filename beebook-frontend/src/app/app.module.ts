@@ -8,12 +8,20 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { OwnPageComponent } from './own-page/own-page.component';
+import { FavPageComponent } from './fav-page/fav-page.component';
+import { HiveDetailComponent } from './hive-detail/hive-detail.component';
+import { OtherPageComponent } from './other-page/other-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    MainPageComponent
+    MainPageComponent,
+    OwnPageComponent,
+    FavPageComponent,
+    HiveDetailComponent,
+    OtherPageComponent
   ],
   imports: [
     BrowserModule,

@@ -100,13 +100,13 @@ h1{
     height:60px;
 }
 
-@media (min-width: 931px) {
+@media (min-width: 501px) {
     .dropdown:hover .dropdown-content {
         display: block;
       } 
 }
 
-@media (max-width: 930px) {
+@media (max-width: 500px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
@@ -171,4 +171,14 @@ h1{
         display: block;
     }
    
+}
+
+.logo-image img{
+    height:3rem;
+    aspect-ratio: 1;
+}
+
+.logo-and-name{
+    display:flex;
+    align-items: center;
 }

@@ -1,0 +1,69 @@
+body > app-root:nth-child(1){
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+}
+
+app-main-page{
+    flex-grow:1;
+}
+
+
+.main {
+    --map-height:80%;
+    height:100%;
+}
+
+.map-div{
+    height: var(--map-height);
+    width:100%;
+    transition: height .2s ease-in-out;
+    border:2px solid black;
+}
+
+.menu{
+    height:100%;
+}
+.menu-div{
+    width:100%;
+    height:calc(100% - var(--map-height));
+    background-color: red;
+    transition: height .2s ease-in-out;
+}
+
+.menu-buttons{
+    margin-top:5px;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-content{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height:100%;
+}
+
+button {
+    display: block;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size:1rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+.menu-list{
+    width:40%;
+}
+
+.menu-detail{
+    width:40%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}

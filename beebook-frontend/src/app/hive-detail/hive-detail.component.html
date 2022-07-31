@@ -1,0 +1,10 @@
+<div class="hive-details">
+    <label>Name: </label>
+    <input [readonly] = "!canBeEdited" [(ngModel)]="selectedHive.name">
+    <label>Besitzer: </label>
+    <input [readonly] = "true" [(ngModel)] = "selectedHive.user_owner">
+    <label>Bienenart: </label>
+    <input [readonly] = "!canBeEdited" [(ngModel)]="selectedHive.bee_type">
+    <label>Krankheit: </label>
+    <input [readonly] = "!canBeEdited" [(ngModel)]="selectedHive.sickness">
+</div>

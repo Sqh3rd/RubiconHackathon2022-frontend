@@ -11,9 +11,10 @@ export class AuthService {
 
   constructor() { }
 
-  login(value: string) {
+  login(email: string, password: string) {
+    // Back End Call einfügen
     this.isLogin = true;
-    this.roleAs = value;
+    this.roleAs = "test"; // == Rolle die im Back end gespeichert ist
     localStorage.setItem('STATE', 'true');
     localStorage.setItem('ROLE', this.roleAs);
     return of({ success: this.isLogin, role: this.roleAs });

@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let hive of fav_bee_hives">
+        <button type="button" (click)="onSelect(hive)" [class.selected]="hive == selectedHive">
+            <span class="name">{{hive.name}}</span>
+        </button>
+    </li>
+</ul>

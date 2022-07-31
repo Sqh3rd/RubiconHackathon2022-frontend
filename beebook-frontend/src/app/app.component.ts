@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent{
   constructor(public router: Router) {
+    router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd){
+        try{
+          const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+          navbarLinks.classList.remove('active');
+        }catch{}
+      } 
+    });
   }
   title = 'beebook-frontend';
   goToMain() {
@@ -16,7 +24,9 @@ export class AppComponent{
   goToLogin() {
     this.router.navigate(['/', 'login']);
   }
-  ngOnInit(){
+
+  ngOnInit() {
+    console.info("this is an init");
     const toggleButton = document.getElementsByClassName('toggle-button')[0];
     const navbarLinks = document.getElementsByClassName('navbar-links')[0];
     const dropdowns = document.getElementsByClassName('dropdown');

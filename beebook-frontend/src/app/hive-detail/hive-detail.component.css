@@ -1,0 +1,27 @@
+*{
+    font-size:1.125rem;
+}
+
+input:read-only{
+    border:none;
+    border-width:0px;
+    background-color: transparent;
+    outline:0;
+}
+
+input:-moz-read-only{
+    border:none;
+    border-width:0px;
+    background-color: transparent;
+    outline:0;
+}
+
+label{
+    font-weight: bold;
+}
+
+.hive-details{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    row-gap:5px;
+}
