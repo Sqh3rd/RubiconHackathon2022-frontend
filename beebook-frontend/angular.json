@@ -64,11 +64,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options":{
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
+              "proxyConfig": "proxy.conf.json",
               "browserTarget": "beebook-frontend:build:production"
             },
             "development": {
+              "proxyConfig": "proxy.conf.json",
               "browserTarget": "beebook-frontend:build:development"
             }
           },

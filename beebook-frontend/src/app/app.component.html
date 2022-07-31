@@ -16,7 +16,8 @@
         <a [ngClass]="{active: router.url.startsWith('/home')}" (click)="goToHome()">Home</a>
       </li>
       <li class="right">
-        <a [ngClass]="{active: router.url === '/login'}" (click)="goToLogin()">Login</a>
+        <a *ngIf="isLoggedIn()">{{getUserName()}}</a>
+        <a *ngIf="!isLoggedIn()" [ngClass]="{active: router.url === '/login'}" (click)="goToLogin()">Login</a>
       </li>
     </ul>
   </div>

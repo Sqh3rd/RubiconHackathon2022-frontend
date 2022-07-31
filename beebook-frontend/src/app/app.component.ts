@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from './auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  constructor(public router: Router) {
+  constructor(public router: Router, private auth:AuthService) {
     router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd){
         try{
@@ -23,6 +25,14 @@ export class AppComponent{
   }
   goToLogin() {
     this.router.navigate(['/', 'login']);
+  }
+
+  getUserName(){
+    return this.auth.getUserName();
+  }
+
+  isLoggedIn(){
+    return this.auth.isLoggedIn();
   }
 
   ngOnInit() {
@@ -54,5 +64,29 @@ export class AppComponent{
             }
         }
     })
+  }
+  tinyAlert(text: string) {
+    Swal.fire({
+      title: text,
+      icon: 'warning'});
+  }
+  successNotification() {
+    Swal.fire('Hi', 'We have been informed!', 'success');
+  }
+  alertConfirmation(text: string) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This process is irreversible.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, go ahead.',
+      cancelButtonText: 'No, let me think',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire('Removed!', 'Product removed successfully.', 'success');
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Product still in our database.)', 'error');
+      }
+    });
   }
 }
